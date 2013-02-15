@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
- article_id = params[:comment].delete(:article_id)
+def create
+  article_id = params[:comment].delete(:article_id)
 
   @comment = Comment.new(params[:comment])
   @comment.article_id = article_id
@@ -8,6 +9,7 @@ class CommentsController < ApplicationController
   @comment.save
 
   redirect_to article_path(@comment.article)
+end
 
 
 end
